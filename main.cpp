@@ -1,7 +1,9 @@
 #include <QApplication>
 #include <FelgoApplication>
-
+#include <QGeoPositionInfoSource>
 #include <QQmlApplicationEngine>
+#include <QTextStream>
+#include <QString>
 
 // uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 //#include <FelgoLiveClient>

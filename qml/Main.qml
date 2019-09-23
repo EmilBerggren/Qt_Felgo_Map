@@ -1,36 +1,73 @@
 import Felgo 3.0
-import QtQuick 2.0
-import QtPositioning 5.5
 import QtLocation 5.5
+import QtPositioning 5.5
+import QtQuick 2.5
 
 App {
-    // You get free licenseKeys from https://felgo.com/licenseKey
-    // With a licenseKey you can:
-    //  * Publish your games & apps for the app stores
-    //  * Remove the Felgo Splash Screen or set a custom one (available with the Pro Licenses)
-    //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
-    //licenseKey: "<generate one from https://felgo.com/licenseKey>"
+  NavigationStack {
 
-    Page {
-        title: qsTr("Main Page")
+    Page
+    {
+        id: map_page
+        title: "Select a position on map"
 
+        // show the map
         AppMap {
-            anchors.fill: parent
-
-            // configure plugin for displaying map here
-            // see http://doc.qt.io/qt-5/qtlocation-index.html#plugin-references-and-parameters
-            // for a documentation of possible Location Plugins
-            plugin: Plugin {
-                name: "<plugin-name>" // e.g. mapbox, ...
-                parameters: [
-                    // set required plugin parameters here
-                ]
+        id:map
+        anchors.fill: parent
+        center: QtPositioning.coordinate(48.2082,16.3738)
+        plugin: Plugin {
+          name: "mapbox"
+          // configure your own map_id and access_token here
+          parameters: [  PluginParameter {
+              name: "mapbox.mapping.map_id"
+              value: "mapbox.streets"
+            },
+            PluginParameter {
+              name: "mapbox.access_token"
+              value: "pk.eyJ1IjoiZ3R2cGxheSIsImEiOiJjaWZ0Y2pkM2cwMXZqdWVsenJhcGZ3ZDl5In0.6xMVtyc0CkYNYup76iMVNQ"
+            },
+            PluginParameter {
+              name: "mapbox.mapping.highdpi_tiles"
+              value: true
+            }]
+        }
+        MapCircle
+        {
+            id: marker
+            center
+            {
+                latitude:  0
+                longitude: 0
             }
-
-            // Center map to Vienna, AT
-            center: QtPositioning.coordinate(48.208417, 16.372472)
-            zoomLevel: 13
+            radius: 1500.0
+            color: 'transparent'
+            border.width: 3
+            visible: false
         }
 
+
+        MouseArea {
+            anchors.fill: map //parent
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: {
+                if (mouse.button == Qt.RightButton || mouse.button == Qt.LeftButton)
+                {
+
+                    marker.center = map.toCoordinate(Qt.point(mouse.x,mouse.y))
+                    marker.visible = true
+                    //map.center = map.toCoordinate(Qt.point(mouse.x,mouse.y))
+
+                    //TODO: Fix the "Expected token "," regarding propery var coordinate
+                    //TODO: Show coordinates on map page title
+                    property var coordinate: map.toCoordinate(Qt.point(mouse.x,mouse.y))
+                    map_page.title = text: "lat: %1; lon:%2".arg(parent.coordinate.latitude).arg(parent.coordinate.longitude)
+
+
+                }
+            }
+        }
     }
+  }
+}
 }
