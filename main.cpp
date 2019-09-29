@@ -4,13 +4,21 @@
 #include <QQmlApplicationEngine>
 #include <QTextStream>
 #include <QString>
+#include <QtGui/QGuiApplication>
+#include <QtQuick/QQuickView>
+#include <QtQml/QQmlEngine>
+#include <QtQml/QQmlContext>
+#include <QtQuick/QQuickItem>
+#include <QLoggingCategory>
 
 // uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 //#include <FelgoLiveClient>
 
+#include "appmodel.h"
 
 int main(int argc, char *argv[])
 {
+	QLoggingCategory::setFilterRules("wapp.*.debug=false");
     QApplication app(argc, argv);
     FelgoApplication felgo;
 
@@ -28,6 +36,10 @@ int main(int argc, char *argv[])
     // for PUBLISHING, use the entry point below
     felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
 
+    qmlRegisterType<WeatherData>("WeatherInfo", 1, 0, "WeatherData");
+    qmlRegisterType<AppModel>("WeatherInfo", 1, 0, "AppModel");
+    qRegisterMetaType<WeatherData>();
+	
     // use this instead of the above call to avoid deployment of the qml files and compile them into the binary with qt's resource system qrc
     // this is the preferred deployment option for publishing games to the app stores, because then your qml files and js files are protected
     // to avoid deployment of your qml files and images, also comment the DEPLOYMENTFOLDERS command in the .pro file
@@ -35,6 +47,7 @@ int main(int argc, char *argv[])
     // felgo.setMainQmlFileName(QStringLiteral("qrc:/qml/Main.qml"));
 
     engine.load(QUrl(felgo.mainQmlFileName()));
+    //engine.load(QUrl())
 
     // to start your project as Live Client, comment (remove) the lines "felgo.setMainQmlFileName ..." & "engine.load ...",
     // and uncomment the line below

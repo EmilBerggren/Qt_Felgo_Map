@@ -22,18 +22,11 @@ public:
     }
 
 public:
-    QString GPS_Cords = "69";
-    QGeoCoordinate GPS_coords;
-
-signals:
-    void positionUpdate(QGeoPositionInfo &info);
 
 public slots:
-    void positionUpdated(const QGeoPositionInfo &info)
-    {
 
-        qDebug() << "Position updated:" << info;
-    }
+signals:
+
 };
 
 #endif // MAIN_H

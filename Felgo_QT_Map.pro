@@ -27,7 +27,9 @@ DEPLOYMENTFOLDERS += assetsFolder
 
 # Add more folders to ship with the application here
 
-RESOURCES += #    resources.qrc # uncomment for publishing
+RESOURCES += \ #    resources.qrc # uncomment for publishing
+    resources.qrc \
+    weatherinfo.qrc
 
 # NOTE: for PUBLISHING, perform the following steps:
 # 1. comment the DEPLOYMENTFOLDERS += qmlFolder line above, to avoid shipping your qml files with the application (instead they get compiled to the app binary)
@@ -40,7 +42,8 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    appmodel.cpp
 
 
 android {
@@ -62,4 +65,69 @@ macx {
 }
 
 HEADERS += \
+    appmodel.h \
     main.h
+
+SUBDIRS += \
+    weatherinfo.pro \
+    weatherinfo.pro
+
+DISTFILES += \
+    android/res/drawable-hdpi/ic_launcher.png \
+    android/res/drawable-mdpi/ic_launcher.png \
+    android/res/drawable-xhdpi/ic_launcher.png \
+    android/res/drawable-xxhdpi/ic_launcher.png \
+    android/res/values/strings.xml \
+    android/res/xml/file_paths.xml \
+    components/BigForecastIcon.qml \
+    components/ForecastIcon.qml \
+    components/WeatherIcon.qml \
+    icons/README.txt \
+    icons/qt_attribution.json \
+    icons/weather-few-clouds.png \
+    icons/weather-fog.png \
+    icons/weather-haze.png \
+    icons/weather-icy.png \
+    icons/weather-overcast.png \
+    icons/weather-showers.png \
+    icons/weather-sleet.png \
+    icons/weather-snow.png \
+    icons/weather-storm.png \
+    icons/weather-sunny-very-few-clouds.png \
+    icons/weather-sunny.png \
+    icons/weather-thundershower.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Contents.json \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x-1.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x-1.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x-1.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png \
+    ios/Assets.xcassets/AppIcon.appiconset/ItunesArtwork@2x.png \
+    ios/Assets.xcassets/Contents.json \
+    ios/Assets.xcassets/LaunchImage.launchimage/Contents.json \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default1125x2436.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default1242x2208.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default1536x2048.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default2048x1536.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default2208x1242.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default2436x1125.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default640x1136.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default640x960.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default750x1334.png \
+    ios/Assets.xcassets/LaunchImage.launchimage/Default768x1024.png \
+    qml/mapinfo.qml \
+    weatherinfo.qml \
+    win/app_icon.ico \
+    win/app_icon.rc
