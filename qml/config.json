@@ -1,8 +1,8 @@
 {
     "title": "Felgo_QT_Map",
-    "identifier": "FelgoQTMap",
+    "identifier": "com.EB.Felgo_Weather_Qt_Project",
     "orientation": "auto",
-    "versioncode": 1,
+    "versioncode": 1.0,
     "versionname": "1.0.0",
     "stage": "test"
 }

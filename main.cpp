@@ -18,7 +18,7 @@
 
 int main(int argc, char *argv[])
 {
-	QLoggingCategory::setFilterRules("wapp.*.debug=false");
+    QLoggingCategory::setFilterRules("wapp.*.debug=false");
     QApplication app(argc, argv);
     FelgoApplication felgo;
 

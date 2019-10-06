@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>weatherinfo.qml</file>
         <file>components/BigForecastIcon.qml</file>
         <file>components/ForecastIcon.qml</file>
         <file>components/WeatherIcon.qml</file>
@@ -16,5 +15,8 @@
         <file>icons/weather-sunny-very-few-clouds.png</file>
         <file>icons/weather-sunny.png</file>
         <file>icons/weather-thundershower.png</file>
+        <file>qml/Main.qml</file>
+        <file>qml/mapinfo.qml</file>
+        <file>qml/weatherinfo.qml</file>
     </qresource>
 </RCC>

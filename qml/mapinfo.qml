@@ -2,6 +2,7 @@ import Felgo 3.0
 import QtLocation 5.5
 import QtPositioning 5.5
 import QtQuick 2.5
+import QtQuick.Controls 2.5
 
 Item{
     id: mapinfo
@@ -32,6 +33,15 @@ Item{
             ]
         }
 
+        Label {
+            id: instructions_label
+
+            text: "Hint: Press somewhere on the map"
+            color: "steelblue"
+            font.pixelSize: 22
+            font.italic: true
+        }
+
         MapCircle {
             id: marker
             center {
@@ -40,7 +50,8 @@ Item{
             }
             radius: 1500.0
             color: 'transparent'
-            border.width: 3
+            border.width: 2
+            border.color: "steelblue"
             visible: false
         }
 
@@ -65,6 +76,7 @@ Item{
                     //        (player_selected_coordinates.coordinate.latitude).arg
                     //        (player_selected_coordinates.coordinate.longitude)
                     newCoordinatesSignal(player_selected_coordinates.coordinate.longitude, player_selected_coordinates.coordinate.latitude);
+                    instructions_label.visible = false
             }
         }
     }

@@ -7,7 +7,7 @@ CONFIG += felgo
 
 # Project identifier and version
 # More information: https://felgo.com/doc/felgo-publishing/#project-configuration
-PRODUCT_IDENTIFIER = FelgoQTMap
+PRODUCT_IDENTIFIER = "com.EB.Felgo_Weather_Qt_Project"
 PRODUCT_VERSION_NAME = 1.0.0
 PRODUCT_VERSION_CODE = 1
 
@@ -15,7 +15,7 @@ PRODUCT_VERSION_CODE = 1
 # main.qml file (App::licenseKey for your app or GameWindow::licenseKey for your game)
 # Only used for local builds and Felgo Cloud Builds (https://felgo.com/cloud-builds)
 # Not used if using Felgo Live
-PRODUCT_LICENSE_KEY = ""
+PRODUCT_LICENSE_KEY = "BBC310F0360F740E2871EFA0D0D861D92A8FB6195EC97732B329989EF983138F5664D34E8E623E8A1AEED12038C06B749890DBD6D5C22EF4ABE00E6431D7A6EA5CCF649241DC3BADC9504F13C095090CA71E885C8AE0AED9AD698789A737A7F9DA639068E4A9F4A1E178FABE5301216A321FB34E28FDF4F3EC44B8E1CF1E2523C695241AEB0D3FB1F8FFCC8CB612243CEAF5948974AB554FA6CE136945A3DEFF9A8B1A9A2D4334426ABADB6E78F6E8D671CF63202E9C87196E0BE77A41B2F55C470FF8DE1E3449D1F4DD1C644B5B3C50A83090F8A203BDC23095B10848037B60D96E961C9E36A75FD20740079D0CDEC70AE1DA7E808043310C116B1B11E09E445A7302A8C55410A86726CBFE4EF9EE15082193E319B5F38741D0E4ECB56512818519BE6EA31D5ED046E09F7C23D4B8C8"
 
 QT += positioning location
 
@@ -30,6 +30,11 @@ DEPLOYMENTFOLDERS += assetsFolder
 RESOURCES += \ #    resources.qrc # uncomment for publishing
     resources.qrc \
     weatherinfo.qrc
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
 
 # NOTE: for PUBLISHING, perform the following steps:
 # 1. comment the DEPLOYMENTFOLDERS += qmlFolder line above, to avoid shipping your qml files with the application (instead they get compiled to the app binary)
@@ -127,7 +132,8 @@ DISTFILES += \
     ios/Assets.xcassets/LaunchImage.launchimage/Default640x960.png \
     ios/Assets.xcassets/LaunchImage.launchimage/Default750x1334.png \
     ios/Assets.xcassets/LaunchImage.launchimage/Default768x1024.png \
+    qml/Main.qml \
     qml/mapinfo.qml \
-    weatherinfo.qml \
+    qml/weatherinfo.qml \
     win/app_icon.ico \
     win/app_icon.rc

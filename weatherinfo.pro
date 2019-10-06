@@ -7,7 +7,7 @@ requires(qtConfig(bearermanagement))
 SOURCES += main.cpp \
     appmodel.cpp
 
-OTHER_FILES += weatherinfo.qml \
+OTHER_FILES += qml/weatherinfo.qml \
     components/WeatherIcon.qml \
     components/ForecastIcon.qml \
     components/BigForecastIcon.qml \
