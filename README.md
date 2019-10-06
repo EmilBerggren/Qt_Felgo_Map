@@ -16,5 +16,7 @@ Whats remaining:
 Project is built with following:
 Additional libraries: libcrypto.so, libssl.so
 SDK: 28.0.3
+androidBuildToolsVersion=26.1.1
+androidCompileSdkVersion=26
 NDK: r19c
-AVD: Target=API25, CPU/ABI=x86
+AVD: API=26, CPU/ABI=x86, Android build SDK= android-29
